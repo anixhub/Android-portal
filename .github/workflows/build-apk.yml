@@ -3,8 +3,6 @@ name: Build Android APK
 on:
   push:
     branches: [ "**" ]
-    tags:
-      - 'v*'
   pull_request:
     branches: [ "**" ]
   workflow_dispatch:
@@ -18,44 +16,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: Set up Java 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
           distribution: 'temurin'
-          cache: gradle
+          java-version: '21'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Install Gradle 8.11.1
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+          unzip -q gradle-8.11.1-bin.zip
+          echo "$PWD/gradle-8.11.1/bin" >> $GITHUB_PATH
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.11.1'
+      - name: Accept Android SDK Licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
 
       - name: Build Debug APK
         run: |
-          gradle :app:assembleDebug --stacktrace
+          gradle :app:assembleDebug --no-daemon --stacktrace
 
-      - name: Prepare APK Output
+      - name: Prepare APK File
         run: |
-          mkdir -p build-artifacts
-          cp app/build/outputs/apk/debug/app-debug.apk build-artifacts/PortalAlumni-Attaroqqy.apk
-          echo "APK successfully generated at build-artifacts/PortalAlumni-Attaroqqy.apk"
+          mkdir -p output-apk
+          cp app/build/outputs/apk/debug/app-debug.apk output-apk/PortalAlumni-Attaroqqy.apk
+          echo "APK ready in output-apk/"
 
-      - name: Upload APK to Actions Artifacts
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: PortalAlumni-Attaroqqy-APK
-          path: build-artifacts/PortalAlumni-Attaroqqy.apk
+          path: output-apk/PortalAlumni-Attaroqqy.apk
           retention-days: 30
-
-      - name: Create GitHub Release (Optional on tags)
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
-        with:
-          files: build-artifacts/PortalAlumni-Attaroqqy.apk
-          generate_release_notes: true
