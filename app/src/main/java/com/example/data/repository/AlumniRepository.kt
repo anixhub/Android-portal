@@ -362,7 +362,7 @@ class AlumniRepository {
                 absentCount = 18,
                 userRsvp = "hadir",
                 rsvpNote = "Insya Allah hadir membawa keluarga",
-                posterResId = R.drawable.poster_reuni,
+                posterResId = R.drawable.alumni_illustration,
                 authorName = "Pengurus Pusat Alumni At-taroqqy",
                 authorHandle = "@admin_pusat",
                 postedAt = "2 hari yang lalu"

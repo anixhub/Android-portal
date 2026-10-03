@@ -348,7 +348,7 @@ fun AlumniHomeTab(
                     IslamicQuickCard(
                         title = "Majmu'ah",
                         subtitle = "Doa & Dzikir",
-                        bgRes = R.drawable.bg_majmuah,
+                        bgRes = R.drawable.bg_alquran,
                         modifier = Modifier.weight(1f),
                         onClick = { viewModel.setAlumniTab(2) }
                     )
@@ -363,7 +363,7 @@ fun AlumniHomeTab(
                     IslamicQuickCard(
                         title = "Kitab Maulid",
                         subtitle = "Simtudduror & Diba'",
-                        bgRes = R.drawable.bg_maulid,
+                        bgRes = R.drawable.bg_aurod,
                         modifier = Modifier.weight(1f),
                         onClick = { viewModel.setAlumniTab(2) }
                     )

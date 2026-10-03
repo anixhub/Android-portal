@@ -66,7 +66,7 @@ data class AdminUser(
     val phone: String = "081298765432",
     val bio: String = "Akun resmi Pengurus Pusat Ikatan Alumni Pondok Pesantren At-taroqqy.",
     val occupation: String = "Sekretariat Ikatan Alumni",
-    val institution: "PP At-taroqqy",
+    val institution: String = "PP At-taroqqy",
     val city: String = "Rembang",
     val province: String = "Jawa Tengah",
     val role: String = "super_admin",
