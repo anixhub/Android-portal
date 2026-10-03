@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Portal Alumni At-taroqqy</string>
+    <string name="tagline">Menjalin Silaturahmi dan Kolaborasi Antar Alumni</string>
+    <string name="login_title">Portal Alumni</string>
+    <string name="login_subtitle">Pondok Pesantren At-taroqqy</string>
+    <string name="username">Username</string>
+    <string name="password">Kata Sandi</string>
+    <string name="login">Masuk ke Portal</string>
+    <string name="role_alumni">Alumni Santri</string>
+    <string name="role_admin">Pengurus / Admin</string>
+    <string name="nav_home">Beranda</string>
+    <string name="nav_directory">Direktori</string>
+    <string name="nav_kitab">Kitab &amp; Aurod</string>
+    <string name="nav_finance">Kas Alumni</string>
+    <string name="nav_card">Kartu Alumni</string>
+    <string name="nav_profile">Profil Saya</string>
+</resources>
